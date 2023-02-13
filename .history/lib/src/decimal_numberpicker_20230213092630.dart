@@ -8,7 +8,6 @@ class DecimalNumberPicker extends StatelessWidget {
   final int minValue;
   final int maxValue;
   final double value;
-  final String decimalSign;
   final ValueChanged<double> onChanged;
   final int itemCount;
   final double itemHeight;
@@ -40,7 +39,6 @@ class DecimalNumberPicker extends StatelessWidget {
     this.itemCount = 3,
     this.itemHeight = 50,
     this.itemWidth = 100,
-    this.decimalSign = ',',
     this.axis = Axis.vertical,
     this.textStyle,
     this.selectedTextStyle,
@@ -80,13 +78,6 @@ class DecimalNumberPicker extends StatelessWidget {
           zeroPad: integerZeroPad,
           textMapper: integerTextMapper,
           decoration: integerDecoration,
-        ),
-        Text(
-          decimalSign,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 22.0,
-          ),
         ),
         NumberPicker(
           minValue: 0,
