@@ -99,6 +99,7 @@ class DecimalNumberPicker extends StatelessWidget {
           textStyle: textStyle,
           selectedTextStyle: selectedTextStyle,
           haptics: haptics,
+          zeroPad: true,
           textMapper: decimalTextMapper,
           decoration: decimalDecoration,
         ),
