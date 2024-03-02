@@ -116,7 +116,7 @@ class _NumberPickerState extends State<NumberPicker> {
               scrollDirection: widget.axis,
               controller: _scrollController,
               itemExtent: itemExtent,
-              itemBuilder: (context, index) => _itemBuilder(context, index, selectedTextStyle),
+              itemBuilder: _itemBuilder,
               padding: EdgeInsets.zero,
             ),
             _NumberPickerSelectedItemDecoration(
@@ -132,8 +132,9 @@ class _NumberPickerState extends State<NumberPicker> {
 
   Widget _itemBuilder(BuildContext context, int index) {
     final themeData = Theme.of(context);
-    final defaultStyle = widget.textStyle ?? themeData.textTheme.bodyText2;
-    final selectedStyle = widget.selectedTextStyle ??
+    final TextStyle? defaultStyle = widget.textStyle ?? themeData.textTheme.bodyText2;
+    // Use widget.selectedTextStyle directly inside this method
+    final TextStyle? selectedStyle = widget.selectedTextStyle ?? 
         themeData.textTheme.headline5?.copyWith(color: themeData.colorScheme.secondary);
 
     final value = _intValueFromIndex(index % itemCount);
@@ -156,6 +157,7 @@ class _NumberPickerState extends State<NumberPicker> {
       child: child,
     );
   }
+
 
   String _getDisplayedValue(int value) {
     final text = widget.zeroPad
